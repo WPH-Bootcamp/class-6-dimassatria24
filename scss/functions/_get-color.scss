@@ -13,14 +13,14 @@
 
     @if map.has-key($color-map, $level) {
       @return map.get($color-map, $level);
+    } @else {
+      // warn 'Invalid color type or level' and return null
+      @warn "Level `#{$level}` invalid color level `#{$type}`.";
+      @return null;
     }
-
+  } @else {
     // warn 'Invalid color type or level' and return null
-    @warn "Level `#{$level}` invalid color level `#{$type}`.";
+    @warn "Invalid color type `#{$type}`.";
     @return null;
   }
-
-  // warn 'Invalid color type or level' and return null
-  @warn "Invalid color type `#{$type}`.";
-  @return null;
 }
